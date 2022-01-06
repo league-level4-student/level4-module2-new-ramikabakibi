@@ -14,7 +14,7 @@ public class GenericsList<T> {
     public GenericsList() {
         list = (T[]) new Object[0];
     }
-    //hi
+    //hikjhkjhkjh
 
     public T get(int loc) throws IndexOutOfBoundsException {
         if (loc < 0 || loc > list.length)
