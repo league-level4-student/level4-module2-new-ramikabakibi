@@ -13,7 +13,7 @@ public class ScannerDemo {
     public static void main(String[] args) {
         /*
          * 1. Create an object of the Scanner class.
-         * 
+         
          * Note: You will need to pass System.in to the constructor(no quotes).
          * 
          * You might notice this looks similar to System.out which you use for
@@ -24,8 +24,9 @@ public class ScannerDemo {
          * Eclipse's console. This may change depending on the environment where
          * are running your program or the input/output stream you are using.
          */
-
-        
+    	Scanner scanner=new Scanner(System.in);
+    	System.out.println("What is your name?");
+        String userName=scanner.nextLine();
         
         /*
          * 2. Use a syso to ask the user for their name and then use the Scanner
@@ -51,9 +52,9 @@ public class ScannerDemo {
          * See if you can find the scanner method that does this without relying
          * on Integer.parseInt().
          */
-
-        
-        
+        System.out.println("What is your age?");
+        int age=scanner.nextInt();
+       
         /*
          * 4.) Try asking the user for another piece of information that's not a
          * String or an int.
@@ -61,18 +62,20 @@ public class ScannerDemo {
          * Note: There are many methods similar to the one you used for int that
          * are capable of taking in primitive data types.
          */
-
+        System.out.println("The sky is blue: true or false?");
+        boolean sky=scanner.nextBoolean();
+        
         // 5.) Print the user's data to the console nicely formatted.
-
-        
-        
+        System.out.println("Your name is: "+ userName);
+        System.out.println("Your age is: "+age);
+        System.out.println("Your boolean is: "+sky);
         /*
          * 6.) Close your scanner to avoid memory leaks.
          * 
          * Note: When using a Scanner with the System.in input stream in larger
          * programs only close the scanner when your program is completely done.
          */
-
+        scanner.close();
     }
 
 }
