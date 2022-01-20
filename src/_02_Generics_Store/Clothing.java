@@ -8,9 +8,11 @@ public class Clothing extends NonFood{
 	public Clothing() {
 		if(new Random().nextBoolean()) {
 			this.item = "clothing1.jpeg";
+			price=4;
 		}
 		else {
 			this.item = "clothing2.jpeg";
+			price=4;
 		}
 	}
 
