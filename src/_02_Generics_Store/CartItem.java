@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 public abstract class CartItem {
 String item;
+String name;
 double price; 
 public abstract JLabel getLabel();
 

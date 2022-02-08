@@ -5,14 +5,17 @@ import java.util.Random;
 import javax.swing.JLabel;
 
 public class Toy extends NonFood {
+	
 	public Toy() {
+		name="toy";
+		price=1;
 		if(new Random().nextBoolean()) {
 			this.item = "toy1.jpeg";
-			price=1;
+			
 		}
 		else {
 			this.item = "toy2.jpeg";
-			price=1;
+			
 		}
 	}
 
