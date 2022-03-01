@@ -36,7 +36,9 @@ public class ConsoleStore {
 	 * -The program should continue until the user chooses to check out.
 	 * 
 	 * -When the user checks out you should let them know if they do not have enough
-	 * money to purchase all their items and offer to put items back.
+	 * money to purchase all their items and offer to put items back(don't offer to put back
+	 *just say that you don't have enough money, go return stuff until you have something less than or equal to 15
+	 *then go back to the question of like add, remove, ect. and they'll just remove until its less than or equal to 15
 	 * 
 	 * -If the user successfully purchases the items you should remove the amount
 	 * from their stipend, show them the pictures of what they bought and print out
@@ -45,82 +47,119 @@ public class ConsoleStore {
 	 */
 
 	public static void main(String[] args) {
-		 scan = new Scanner(System.in);
-		 customer = new Person();
+		scan = new Scanner(System.in);
+		customer = new Person();
 		System.out.println("Welcomoe to the Console Store! What is your name?");
 		String customerName = scan.nextLine();
 
-		System.out.println("Hello " + customerName
-				+ " ! Would you like to add something to your cart, remove something, view your items or check out?");
-		String firstStep = scan.nextLine();
 		do {
-			if (firstStep.substring(0, 3).equalsIgnoreCase("add")) {
-				System.out.println("Would you like to add candy($2), cereal($6), clothing($4) or toys($1) to your cart?");
-	    		String item=scan.nextLine();
-	    		addItems(item);
-			}
+			System.out.println("Hello " + customerName
+					+ "! Would you like to add something to your cart, remove something, view your items or check out?");
+			String firstStep = scan.nextLine();
+			switch (firstStep) {
+			case "add":
+				System.out
+						.println("Would you like to add candy($2), cereal($6), clothing($4) or toys($1) to your cart?");
+				String item = scan.nextLine();
+				addItems(item);
+				break;
+			case "remove":
+				System.out.println(
+						"Would you like to remove candy($2), cereal($6), clothing($4) or toys($1) from your cart?");
+				String removedItem = scan.nextLine();
+				removeThings(removedItem);
+				break;
 
-			if (firstStep.substring(0, 6).equalsIgnoreCase("remove")) {
-//START ON THIS REMOVE STUFF, I created a method down below, in this if need to ask
-				//what type of item they want, then save that in a variable and 
-//use it to call the removeThings method down below, and then maybe ask how many, 
-//and then go through their cart, each item has a name, so that makes it easy to
-//identify which item it is, so you can remove the appropriate one and how many of them(
-				//that can be part of the for loop to see how many times to run)
-//also when remove the itmes, need to add the appropriate amount of money back
-				//After you do that then start on the view and check things(make seaprate
-				//methods for those
-			}
-			if (firstStep.substring(0, 4).equalsIgnoreCase("view")) {
+			case "view":
 
-			}
-			if (firstStep.substring(0, 5).equalsIgnoreCase("check")) {
+				break;
+
+			case "check":
+
+				break;
+
+			// START ON THIS REMOVE STUFF, I created a method down below, in this if need to
+			// ask
+			// what type of item they want, then save that in a variable and
+			// use it to call the removeThings method down below, and then maybe ask how
+			// many,
+			// and then go through their cart, each item has a name, so that makes it easy
+			// to
+			// identify which item it is, so you can remove the appropriate one and how many
+			// of them(
+			// that can be part of the for loop to see how many times to run)
+			// also when remove the itmes, need to add the appropriate amount of money back
+			// After you do that then start on the view and check things(make seaprate
+			// methods for those
 
 			}
 		} while (customer.isCheckedOut == false);
 
 	}
-	
+
 	static public void addItems(String item) {
-		if(item.equalsIgnoreCase("candy")){
+		if (item.equalsIgnoreCase("candy")) {
 			System.out.println("How many pieces of candy do you want?");
-			int numItems=scan.nextInt();
-		for(int i=0; i<numItems; i++) {
-			customer.customerCart.add(new Candy());
-			customer.money-=2;
-			System.out.println("Remaining money: "+customer.money+"$");
+			int numItems = scan.nextInt();
+			for (int i = 0; i < numItems; i++) {
+				customer.customerCart.add(new Candy());
+				customer.money -= 2;
+				System.out.println("Remaining money: " + customer.money + "$");
+			}
+
 		}
-		}
-		if(item.equalsIgnoreCase("cereal")){
+		if (item.equalsIgnoreCase("cereal")) {
 			System.out.println("How many boxes of cereal do you want?");
-			int numItems=scan.nextInt();
-		for(int i=0; i<numItems; i++) {
-			customer.customerCart.add(new Cereal());
-			customer.money-=6;
-			System.out.println("Remaining money: "+customer.money+"$");
+			int numItems = scan.nextInt();
+			for (int i = 0; i < numItems; i++) {
+				customer.customerCart.add(new Cereal());
+				customer.money -= 6;
+				System.out.println("Remaining money: " + customer.money + "$");
+			}
+
 		}
-		}
-		if(item.equalsIgnoreCase("clothing")){
+		if (item.equalsIgnoreCase("clothing")) {
 			System.out.println("How many pieces of clothing do you want?");
-			int numItems=scan.nextInt();
-		for(int i=0; i<numItems; i++) {
-			customer.customerCart.add(new Clothing());
-			customer.money-=4;
-			System.out.println("Remaining money: "+customer.money+"$");
+			int numItems = scan.nextInt();
+			for (int i = 0; i < numItems; i++) {
+				customer.customerCart.add(new Clothing());
+				customer.money -= 4;
+				System.out.println("Remaining money: " + customer.money + "$");
+
+			}
+
 		}
-		}
-		if(item.equalsIgnoreCase("toys")){
+		if (item.equalsIgnoreCase("toys")) {
 			System.out.println("How many toys do you want?");
-			int numItems=scan.nextInt();
-		for(int i=0; i<numItems; i++) {
-			customer.customerCart.add(new Toy());
-			customer.money-=1;
-			System.out.println("Remaining money: "+customer.money+"$");
-		}
+			int numItems = scan.nextInt();
+			for (int i = 0; i < numItems; i++) {
+				customer.customerCart.add(new Toy());
+				customer.money -= 1;
+				System.out.println("Remaining money: " + customer.money + "$");
+
+			}
+
 		}
 	}
-	
+
 	static public void removeThings(String item) {
-		
+		if(item.equalsIgnoreCase("candy")) {
+			System.out.println("How many pieces of candy do you want to remove?");
+			int numItems=scan.nextInt();
+			for(int i=0; i<numItems; i++) {
+				for(int j=0; i<customer.customerCart.length();j++) {
+					if(customer.customerCart.get(j).name.equals("candy")){
+						customer.customerCart.remove(j);
+						customer.money+=2;
+						System.out.println("Remaining money: "+customer.money+ "$");
+						break;
+					}
+				}
+							}
+		}
+		//OK SO DID THE REMOVE FOR THE CANDY, NOW NEED TO DO IT FOR ALL THE OTHER ITEMS
+		//CAN BASICALLY JUST COPY PASTE AND THEN CHANGE THE NAME AND MONEY AND EVERYTHING
+		//ACCORDINGLY, AFTER HAVE DONE THAT THEN NEED TO START WORKING ON THE VIEW ITEMS THING
+		// AND THEN FINALLY THE CHECK OUT
 	}
 }

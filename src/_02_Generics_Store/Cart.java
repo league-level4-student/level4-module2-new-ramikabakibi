@@ -16,7 +16,7 @@ public class Cart<T extends CartItem> {
     private T[] cart;
 
     public Cart() {
-        cart = (T[]) new CartItem[5];
+        cart = (T[]) new CartItem[20];
     }
 
     // Adds an item to the cart
@@ -27,8 +27,25 @@ public class Cart<T extends CartItem> {
                 return;
             }
         }
-        JOptionPane.showMessageDialog(null,
-                "Your cart is full!\nNo more than 5 items");
+        
+    }
+    public void remove(int index) {
+    	T[] newCart=(T[]) new CartItem[cart.length-1];
+    	for(int i=0; i<cart.length; i++) {
+    		if(i<index) {
+    			newCart[i]=cart[i];
+    		}
+    		if(i==index) {
+    			continue;
+    		}
+    		if(i>index) {
+    			newCart[i-1]=cart[i];
+    		}
+    	}
+    	cart=newCart;
+    }
+    public CartItem get(int index) {
+    	return cart[index];
     }
 
     // Displays everything currently in the cart

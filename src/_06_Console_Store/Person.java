@@ -6,7 +6,7 @@ import _02_Generics_Store.CartItem;
 public class Person {
  int money=15;
  String name;
- Cart<CartItem> customerCart;
+ Cart<CartItem> customerCart=new Cart<CartItem>();
  boolean isCheckedOut=false;
  
  
