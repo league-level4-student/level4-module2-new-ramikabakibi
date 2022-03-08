@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public abstract class CartItem {
 String item;
 public String name;
-double price; 
+public double price; 
 public abstract JLabel getLabel();
 
 

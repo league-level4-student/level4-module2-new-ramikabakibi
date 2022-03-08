@@ -11,6 +11,7 @@ public class ConsoleStore {
 	static Scanner scan;
 	static Person customer;
 	static int newMoney;
+	static String customerName;
 	/*
 	 * Write a program that simulates shopping in a store using the Scanner and the
 	 * classes in Generics_Store.
@@ -53,7 +54,7 @@ public class ConsoleStore {
 		customer = new Person();
 		newMoney=customer.money;
 		System.out.println("Welcome to the Console Store! What is your name?");
-		String customerName = scan.nextLine();
+		 customerName = scan.nextLine();
 		
 		do {
 			System.out.println("Hello " + customerName
@@ -74,11 +75,16 @@ public class ConsoleStore {
 				break;
 
 			case "view":
-
+				viewItems();
 				break;
 
-			case "check":
-
+			case "check out":
+				if(newMoney>=0) {
+					checkOut();
+				}
+				else {
+					System.out.println("You don't have enough money to purchase everything in your cart! Please return items until your balance is greater than or equal to 0 dollars");
+				}
 				break;
 			default:
 				System.out.println(firstStep);
@@ -178,7 +184,7 @@ public class ConsoleStore {
 				}
 			}
 			
-				System.out.println("Remaining money: " + newMoney + "$");
+				System.out.println("No more candy in the cart! Remaining money: " + newMoney + "$");
 				
 			
 		}
@@ -243,5 +249,22 @@ public class ConsoleStore {
 			
 		}
 
+	}
+	static public void viewItems() {
+		customer.customerCart.showCart();
+	}
+	static public void checkOut() {
+		System.out.println("Checking out...");
+		customer.isCheckedOut=true;
+		
+		System.out.println("Successfuly checked out! Name: "+customerName);
+		for(int i=0; i<customer.customerCart.length(); i++) {
+			if(customer.customerCart.get(i)!=null) {
+			System.out.println(customer.customerCart.get(i).name+": "+customer.customerCart.get(i).price+"$");
+			}
+		}
+		int moneySpent=15-newMoney;
+		System.out.println("Total: "+moneySpent+"$");
+		customer.customerCart.showCart();
 	}
 }
